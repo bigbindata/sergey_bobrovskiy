@@ -11,5 +11,3 @@ def odometer(data: List[int])-> int:
             distance += data[i]*(data[i+1]-data[i-1])
 
     return distance
-
-print(odometer(data = [10, 1, 20, 2]))
