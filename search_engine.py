@@ -1,9 +1,5 @@
 from typing import Tuple, List
 import re
-import copy
-
-lenght = copy.deepcopy(len)
-lenght
 
 def return_new_word_with_space(word: str, N: int) -> str:
   new_list=[]
@@ -16,6 +12,8 @@ def return_new_string_with_spaces_and_list_index_space(string: str, N: int) -> T
   for word in string.split():
     if len(word) > N:
        string = string.replace(word, return_new_word_with_space(word, N))
+
+
   return string ,[m.start() for m in re.finditer(' ', string)]
 
 def return_list_substring_with_space_for_replace_to_symbol_to_next_string(list_index_space: List[int], N: int):
@@ -42,15 +40,11 @@ def return_code_is_string(string: str, word: str) -> List[int]:
       code_list_is_word_in_string.append(1)
     else:
       code_list_is_word_in_string.append(0)
-  return code_list_is_word_in_string  
+  return code_list_is_word_in_string 
 
-def WordSearch(len: int, s: str, subs: str) -> List[int]:
-    
-  new_string, list_index_space = return_new_string_with_spaces_and_list_index_space(s, len)
-  list_substring_with_space = return_list_substring_with_space_for_replace_to_symbol_to_next_string(list_index_space, len)
-
+def proxy_function(list_substring_with_space: str, new_string: str, subs: str) -> List[int]:
   list_new_string = []
-  for index in range(lenght(new_string)):
+  for index in range(len(new_string)):
     if index in list_substring_with_space:
       list_new_string.append("\n")
     else:
@@ -65,3 +59,11 @@ def WordSearch(len: int, s: str, subs: str) -> List[int]:
     else:
       code_list_is_word_in_string.append(0)
   return code_list_is_word_in_string
+
+
+def WordSearch(len: int, s: str, subs: str) -> List[int]:
+    
+  new_string, list_index_space = return_new_string_with_spaces_and_list_index_space(s, len)
+  list_substring_with_space = return_list_substring_with_space_for_replace_to_symbol_to_next_string(list_index_space, len)
+  return proxy_function(list_substring_with_space = list_substring_with_space, new_string = new_string, subs = subs)
+  
