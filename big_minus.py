@@ -1,4 +1,5 @@
 from typing import Union, Tuple
+from math import fabs
 
 def minus_number(n1:Union[str, int], n2:Union[str, int]) -> Tuple[int] :
   result = int(n1) - int(n2)
@@ -7,6 +8,8 @@ def minus_number(n1:Union[str, int], n2:Union[str, int]) -> Tuple[int] :
   return 0 , result
 
 def BigMinus(s1: str, s2: str) -> str:
+  if all((len(s1) == 1, len(s2) == 1)):
+    return str(int(fabs(int(s1)-int(s2))))
 
   if len(s1) >= len(s2):
     long_string = s1
