@@ -8,6 +8,9 @@ def minus_number(n1:Union[str, int], n2:Union[str, int]) -> Tuple[int] :
   return 0 , result
 
 def BigMinus(s1: str, s2: str) -> str:
+  if s1 == s2:
+    return '0'
+    
   if all((len(s1) == 1, len(s2) == 1)):
     return str(int(fabs(int(s1)-int(s2))))
 
