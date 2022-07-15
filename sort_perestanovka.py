@@ -48,9 +48,9 @@ def return_new_example_list_with_better_sort(example_list):
 
 
 def MisterRobot(N:int, data:List[int]) -> bool:
-  sort_example_list = return_new_example_list_with_better_sort(data)
-
   try:
+    sort_example_list = return_new_example_list_with_better_sort(data)
+
     while sort_example_list != sorted(data):
       sort_example_list = return_new_example_list_with_better_sort(sort_example_list)
     return True
