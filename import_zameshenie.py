@@ -25,6 +25,9 @@ class ConditionProgrammDeque():
     def get_count_use_append_or_del(self,):
         return self._count_use_append_or_del
 
+    def set_count_use_append_or_del(self, value):
+        self._count_use_append_or_del = value
+
     def increment_count_use_append_or_del(self,):
         self._count_use_append_or_del += 1
 
@@ -72,6 +75,7 @@ def append_string(S: str) -> str:
         condition_programm.set_position(0)
         condition_programm.set_list_string_condition([global_string, ])
         condition_programm.set_count_use_undo(0)
+        condition_programm.set_count_use_append_or_del(0)
 
     condition_programm.append_to_string_condition(condition_programm.get_current_string_condition() + S)
 
@@ -91,6 +95,7 @@ def del_symbols(N:str) -> str:
         condition_programm.set_position(0)
         condition_programm.set_list_string_condition([global_string, ])
         condition_programm.set_count_use_undo(0)
+        condition_programm.set_count_use_append_or_del(0)
 
     if N >= len(global_string):
         condition_programm.append_to_string_condition("")
@@ -105,6 +110,7 @@ def del_symbols(N:str) -> str:
     global_string = condition_programm.get_current_string_condition()
     return global_string
 
+
 def return_symbol_by_index(i:str) -> str:
     global global_string
     i = int(i)
@@ -112,6 +118,7 @@ def return_symbol_by_index(i:str) -> str:
     if i > len(global_string)-1:
         return ""
     return global_string[i]
+
 
 def Undo():
     global global_string
@@ -129,12 +136,15 @@ def Undo():
 def Redo():
     global global_string
 
-    if condition_programm.get_last_command() in (4, 5) and condition_programm.get_count_use_undo()> 0:
+    if condition_programm.get_last_command() in (4, 5) and condition_programm.get_count_use_undo() > 0:
         condition_programm.increment_position()
         condition_programm.decrement_count_use_undo()
         global_string = condition_programm.get_current_string_condition()
+        condition_programm.increment_count_use_append_or_del()
+
     condition_programm.set_last_command(5)
     return global_string
+
 
 def BastShoe(command: str) -> str:
     global global_string
@@ -161,4 +171,3 @@ def BastShoe(command: str) -> str:
 
 global_string = ""
 condition_programm = ConditionProgrammDeque(["",],0, None)
-
