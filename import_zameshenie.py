@@ -105,7 +105,7 @@ def del_symbols(N:str) -> str:
 def return_symbol_by_index(i:str) -> str:
     global global_string
     i = int(i)
-    condition_programm.last_command = 3
+
     if i > len(global_string)-1:
         return ""
     return global_string[i]
