@@ -17,9 +17,9 @@ def is_dict_valid(test_dict:dict, key_valid:str) -> bool:
 def SherlockValidString(s: str) -> bool:
     counter_dict = Counter (s)
 
-    if sum(counter_dict.values()) % len(counter_dict.values()) == 0 :
+    if len(set(counter_dict.values())) == 1 :
         return True
-        
+
     most_common_value_key_in_string = Counter(counter_dict.values()).most_common(1)[0][0]
 
     for key, value in counter_dict.items():
