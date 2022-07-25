@@ -75,9 +75,7 @@ def a_year_has_passed(array_tree, number_year):
 
 
 def TreeOfLife(H:int, W:int, N: int, tree: List[str]) -> List[str]:
-    array_tree = return_array_start_tree([".+..",
-                      "..+.",
-                      ".+.."])
+    array_tree = return_array_start_tree(tree)
 
     for year in range(1,N+1):
         array_tree =  a_year_has_passed(array_tree, year)
