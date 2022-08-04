@@ -88,4 +88,4 @@ def rotate_matrix_one_time(original, height_matrix, weight_matrix):
 def MatrixTurn(Matrix:List[str], M:int, N:int, T:int) -> None:
     for _ in range(T):
         Matrix = rotate_matrix_one_time(Matrix, M, N)
-    Matrix = ["".join(i) for i in Matrix]
+        Matrix = ["".join(i) for i in Matrix]
